@@ -1,0 +1,150 @@
+.hs-hero {
+  position: relative;
+  height: 520px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: var(--color-primary);
+}
+
+/* Slides */
+.hs-slide {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: top center;
+  transition: opacity 0.9s ease;
+  opacity: 1;
+}
+
+.hs-slide-in {
+  opacity: 0;
+  animation: hsFadeIn 0.9s ease forwards;
+}
+
+@keyframes hsFadeIn {
+  from { opacity: 0; transform: scale(1.04); }
+  to   { opacity: 1; transform: scale(1);    }
+}
+
+/* Dark overlay */
+.hs-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(
+    180deg,
+    rgba(13, 31, 60, 0.45) 0%,
+    rgba(13, 31, 60, 0.65) 100%
+  );
+}
+
+/* Text content */
+.hs-content {
+  position: relative;
+  z-index: 2;
+  color: var(--color-white);
+  padding: 0 1.5rem 3rem;
+}
+
+.hs-tag {
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--color-accent);
+  margin-bottom: 1rem;
+}
+
+.hs-content h1 {
+  font-family: var(--font-heading);
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  text-shadow: 0 3px 12px rgba(0, 0, 0, 0.5);
+  line-height: 1.2;
+}
+
+.hs-subtitle {
+  font-size: 1.1rem;
+  opacity: 0.9;
+  max-width: 580px;
+  margin: 0 auto;
+  line-height: 1.7;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+}
+
+/* Dots */
+.hs-dots {
+  position: absolute;
+  bottom: 3.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+  z-index: 3;
+}
+
+.hs-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.4);
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: background 0.25s, transform 0.25s, width 0.25s;
+}
+
+.hs-dot.active {
+  background: var(--color-accent);
+  transform: scale(1.3);
+  width: 22px;
+  border-radius: 4px;
+}
+
+.hs-dot:hover {
+  background: rgba(255, 255, 255, 0.8);
+}
+
+/* Curved bottom */
+.hs-curve {
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  right: 0;
+  height: 70px;
+  background: var(--color-bg);
+  border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+  z-index: 4;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .hs-hero {
+    height: 420px;
+  }
+
+  .hs-content h1 {
+    font-size: 2rem;
+  }
+
+  .hs-subtitle {
+    font-size: 0.95rem;
+  }
+
+  .hs-curve {
+    height: 50px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hs-hero {
+    height: 360px;
+  }
+
+  .hs-content h1 {
+    font-size: 1.75rem;
+  }
+}
